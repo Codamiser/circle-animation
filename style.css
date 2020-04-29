@@ -1,0 +1,125 @@
+body {
+  background-color: #050210;
+  padding: 0;
+  margin: 0;
+  display: flex;
+
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+}
+
+
+.circle {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: repeating-linear-gradient(#fb5dad, #55fb9f,
+   #b97aff);
+   animation: my-animation 0.8s linear infinite;
+
+}
+.circle::after,
+.circle::before {
+  border-radius: 50%;
+  content: ' ';
+  position: absolute;
+    background:linear-gradient(#fb5dad,#55fb9f,#b97aff);
+}
+
+.circle::after {
+  filter: blur(100px);
+  overflow: hidden;
+}
+
+
+
+@keyframes my-animation {
+ from {
+   transform: rotate(0deg);
+ }
+
+ to {
+   transform: rotate(360deg);
+}
+}
+
+.innercircle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: #4e4ecf;
+  overflow: hidden;
+
+}
+
+
+.circle span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(#fb5dad,#55fb9f,#b97aff);
+}
+
+
+.circle span:nth-child(1) {
+  filter: blur(5px);
+}
+
+.circle span:nth-child(2) {
+  filter: blur(10px);
+}
+
+.circle span:nth-child(3) {
+  filter: blur(25px);
+}
+
+.circle span:nth-child(4) {
+  filter: blur(50px);
+}
+
+.innercircle div:nth-child(1){
+  display: block;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  position: relative;
+  background: #0c0526;
+  transition: fade-out;
+
+}
+.innercircle div:first-of-type{
+  animation: circleScale 1s ease-out infinite;
+  animation-delay:1s;
+  z-index:9;
+}
+
+.innercircle div:nth-of-type(2){
+  top: -200px;
+  left: 0;
+  animation: circleScale 1s ease-out infinite;
+  z-index: 10;
+}
+
+
+@keyframes circleScale {
+	10% {
+		transform: scale(0.2); 
+		background: rgba(18,12,38,1);
+		z-index: 20;
+  }
+  
+
+
+	100% {
+		background: rgba(14,8,34,1);
+  		transform: scale(3.6);
+  		z-index: 8;
+  	}
+}
